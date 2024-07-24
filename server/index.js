@@ -8,6 +8,25 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+const users = [
+    {
+        idx : 1,
+        id: "test",
+        pw: "1234",
+        created: new DataTransfer("2024-07-20"),
+        email: "test@naver.com",
+        nick: "겁나 무서운 전사"
+    },
+    {
+        idx : 2,
+        id: "hello",
+        pw: "hello1004",
+        created: new DataTransfer("2024-07-22"),
+        email: "hello@naver.com",
+        nick: "헬로월드"
+    },
+];
+
 app.get('/', function(req, res) {
     res.sendFile(__dirname + "/public/home.html"); // 99% index.html
 });
@@ -31,6 +50,9 @@ app.get('/chart', function(req, res){
             url: '/movie?cate=action&sf?code={ranking}'
         }
     ])
+})
+app.post('/login', function(req, res) {
+    console.log(req.body);
 })
 // req: request [요청]
 // res: response [응답]
